@@ -1,0 +1,147 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="heading text-center text-uppercase m-2">
+            <h4 style="color: white;;">Home Screen</h4>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 mx-auto mt-5">
+                <div class="card">
+                    <div class="card-header text-center text-uppercase">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h2 class="ml-5">Employee Details</h2>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary btn-md float-right text-center text-uppercase" data-toggle="modal" data-target="#exampleModal">add employee</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <table class="table">
+                                    <thead class="thead-dark table-hover">
+                                        <tr align="center">
+                                        <th scope="col">Employee Id</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Date of Birth</th>
+                                        <th scope="col">Mobile No</th>
+                                        <th scope="col">City</th>
+                                        <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody align="center">
+                                        <tr *ngFor="let employee of employees">
+                                        <th scope="row">{{ employee.empid }}</th>
+                                        <td>{{ employee.firstname }}</td>
+                                        <td>{{ employee.lastname }}</td>
+                                        <td>{{ employee.dob }}</td>
+                                        <td>{{ employee.mobileno }}</td>
+                                        <td>{{ employee.city }}</td>
+                                        <td>{{ employee.address }}</td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary btn-md m-2" data-toggle="modal" data-target="#exampleModal" >Update</button>
+                                            <button type="submit" class="btn btn-danger btn-md">Delete</button>
+                                        </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal for update and delete -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">       
+      <div class="modal-header text-center text-uppercase bg-dark text-white">
+            <div class="col-md-12">
+                <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+                <!-- <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-12 col-sm-12 col-xs-21">
+                <div class="row">
+                    <form [formGroup]="employeeForm" (ngSubmit)="onEmployeeSubmit(employeeForm.value)">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Enter Employee Id</label>
+                                    <input type="eid" name="eid" class="form-control" id="eid" placeholder=" Enter Employee id" 
+                                    formControlName="eid">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Enter FirstName</label>
+                                    <input type="fname" name="fname" class="form-control" id="fname" placeholder=" Enter first name" 
+                                    formControlName="fname">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Enter LastName</label>
+                                    <input type="lname" name="lname" class="form-control" id="lname" placeholder=" Enter last name" 
+                                    formControlName="lname">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Enter Date of Birth</label>
+                                    <input type="dob" name="dob" class="form-control" id="dob" placeholder="Enter DOB" 
+                                    formControlName="dob">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Enter Mobile Number</label>
+                                    <input type="number" name="mno" class="form-control" id="mno" placeholder="Enter Mobile Number" 
+                                    formControlName="mno">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Enter City Name</label>
+                                    <input type="city" name="city" class="form-control" id="city" placeholder="Enter City Name" 
+                                    formControlName="city">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Enter Address</label>
+                                    <textarea name="address" cols="53" rows="3" class="form-control" id="address" placeholder="Enter Address"                    formControlName="address"></textarea>                                      
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                <div class="row">
+                                    <button type="submit" class="btn btn-primary btn-lg mt-5 mx-auto">Add Employee</button>
+                                    <button type="submit" class="btn btn-danger btn-lg mt-5 mr-5">Upadate Employee</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
